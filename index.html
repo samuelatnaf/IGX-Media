@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IGX Media | Elite Social Media Marketing Agency</title>
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #FFFFFF;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a {
+      color: #00FFC8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #00CC9A;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(18, 18, 18, 0.85);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      padding: 15px 0;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      font-size: 24px;
+      color: #00FFC8;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    nav ul li a {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+    nav ul li a:hover {
+      color: #00CC9A;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      padding-top: 100px;
+      background:
+        linear-gradient(
+          rgba(18, 18, 18, 0.7),
+          rgba(18, 18, 18, 0.7)
+        ),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: #00FFC8;
+      padding-left: 40px;
+    }
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      font-weight: 900;
+      max-width: 600px;
+      line-height: 1.1;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      max-width: 600px;
+      color: #B0B0B0;
+    }
+    .hero .btn-primary {
+      background: #00FFC8;
+      color: #121212;
+      padding: 18px 40px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 255, 200, 0.6);
+    }
+    .hero .btn-primary:hover {
+      background: #00E5B9;
+      box-shadow: 0 8px 20px rgba(0, 230, 185, 0.8);
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+    h3.section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #00FFC8;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    /* Services */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: #1E1E1E;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 255, 200, 0.2);
+      transition: transform 0.3s ease;
+      color: #FFFFFF;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 255, 200, 0.5);
+    }
+    .service-card h4 {
+      margin-bottom: 15px;
+      color: #00FFC8;
+    }
+    .service-card p {
+      font-size: 1rem;
+      color: #B0B0B0;
+    }
+
+    /* Process */
+    .process-steps {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      color: #FFFFFF;
+    }
+    .process-step {
+      background: #1E1E1E;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 255, 200, 0.2);
+      font-weight: 600;
+    }
+    .process-step span {
+      color: #00FFC8;
+      font-weight: 900;
+      margin-right: 15px;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      color: #FFFFFF;
+    }
+    .testimonial {
+      background: #1E1E1E;
+      padding: 30px 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 255, 200, 0.2);
+      font-style: italic;
+      position: relative;
+    }
+    .testimonial::before {
+      content: "“";
+      font-size: 4rem;
+      color: #00FFC8;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-weight: 900;
+      opacity: 0.3;
+    }
+    .testimonial p {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+    .testimonial .author {
+      font-weight: 700;
+      text-align: right;
+      color: #00FFC8;
+    }
+
+    /* Contact Section Flex */
+    #contact .container {
+      display: flex;
+      gap: 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    /* Contact Info (Left) */
+    .contact-info {
+      flex: 1;
+      min-width: 280px;
+      color: #FFFFFF;
+      max-width: 400px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .contact-info h4 {
+      color: #00FFC8;
+      margin-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+    .contact-info p {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-info p a {
+      color: #00FFC8;
+      font-weight: 600;
+    }
+    .contact-info p svg {
+      fill: #00FFC8;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    /* Contact Form (Right) */
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+      max-width: 550px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      background: #1E1E1E;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,255,200,0.2);
+    }
+    .contact-form label {
+      font-weight: 700;
+      color: #00FFC8;
+    }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      padding: 15px 20px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #222;
+      color: #fff;
+      resize: vertical;
+    }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      outline: 2px solid #00FFC8;
+    }
+    .contact-form button {
+      background: #00FFC8;
+      color: #121212;
+      padding: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1.1rem;
+    }
+    .contact-form button:hover {
+      background: #00E5B9;
+    }
+
+    /* Mobile Buttons Container */
+    #mobile-buttons {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(30, 30, 30, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 8px 12px;
+      border-radius: 30px;
+      z-index: 2000;
+      gap: 12px;
+    }
+    #mobile-buttons button {
+      background: #00FFC8;
+      border: none;
+      color: #121212;
+      padding: 10px 16px;
+      font-weight: 700;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
+      min-width: 90px;
+    }
+    #mobile-buttons button:hover {
+      background: #00E5B9;
+    }
+
+    /* Overlay modal for showing content */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      z-index: 3000;
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    #overlay .content-box {
+      max-width: 600px;
+      background: #1E1E1E;
+      margin: 60px auto;
+      border-radius: 20px;
+      padding: 25px 35px;
+      color: #FFFFFF;
+      position: relative;
+      box-shadow: 0 5px 20px rgba(0,255,200,0.6);
+    }
+    #overlay .content-box h3 {
+      color: #00FFC8;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #overlay .content-box p, #overlay .content-box ul, #overlay .content-box li {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #ccc;
+    }
+    #overlay .content-box ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+    #overlay .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: #00FFC8;
+      cursor: pointer;
+      font-weight: 900;
+      transition: color 0.3s ease;
+    }
+    #overlay .close-btn:hover {
+      color: #00E5B9;
+    }
+
+    /* Hide mobile buttons on desktop */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      #mobile-buttons {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      #mobile-buttons button {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        min-width: 75px;
+      }
+      #overlay .content-box {
+        margin: 40px 15px;
+        padding: 20px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>IGX Media</h1>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://calendly.com/samuelatnafu88" target="_blank" rel="noopener" style="color:#00FFC8; font-weight:700;">Book Free Call</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Fuel Your Business Growth with Ads That Deliver Real Results</h2>
+      <p>Expert Meta Ads Management & Social Media Marketing Tailored for Real Estate & Local Businesses.</p>
+      <button class="btn-primary" onclick="window.open('https://calendly.com/samuelatnafu88', '_blank')">Book Your Free Strategy Call</button>
+    </div>
+  </section>
+
+  <section id="services">
+    <h3 class="section-title">Our Services</h3>
+    <div class="services container">
+      <div class="service-card">
+        <h4>Meta Ads Management</h4>
+        <p>Optimized Facebook & Instagram ad campaigns that drive leads and increase conversions.</p>
+      </div>
+      <div class="service-card">
+        <h4>Lead Generation</h4>
+        <p>Targeted strategies to attract high-quality leads ready to convert into clients.</p>
+      </div>
+      <div class="service-card">
+        <h4>Campaign Strategy</h4>
+        <p>Customized ad strategies tailored to your business goals and audience insights.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <h3 class="section-title">Our Process</h3>
+    <div class="process-steps container">
+      <div class="process-step"><span>1.</span> Free Discovery Call to Understand Your Needs</div>
+      <div class="process-step"><span>2.</span> Custom Strategy Development & Proposal</div>
+      <div class="process-step"><span>3.</span> Campaign Setup and Launch</div>
+      <div class="process-step"><span>4.</span> Continuous Optimization & Reporting</div>
+      <div class="process-step"><span>5.</span> Scale Your Ads & Grow Your Business</div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h3 class="section-title">What Our Clients Say</h3>
+    <div class="testimonials container">
+      <div class="testimonial">
+        <p>IGX Media took our real estate ads to the next level. Leads increased by 200% in just 3 months!</p>
+        <div class="author">— Sarah K., Realtor</div>
+      </div>
+      <div class="testimonial">
+        <p>The team is responsive, knowledgeable, and results-driven. Highly recommend for local business marketing.</p>
+        <div class="author">— Mike D., Local Business Owner</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h3 class="section-title">Get In Touch</h3>
+    <div class="container">
+      <div class="contact-info">
+        <h4>Contact Information</h4>
+        <p>📧 Email: <a href="mailto:igxmediaofficial@gmail.com">igxmediaofficial@gmail.com</a></p>
+        <p>📅 Schedule a Call: <a href="https://calendly.com/samuelatnafu88" target="_blank" rel="noopener">Book on Calendly</a></p>
+        <p>📱 Instagram: <a href="https://instagram.com/igx_mediaagency" target="_blank" rel="noopener">@igx_mediaagency</a></p>
+        <p>💼 LinkedIn: <a href="https://www.linkedin.com/company/igxmedia/?viewAsMember=true" target="_blank" rel="noopener">IGX Media Company</a></p>
+      </div>
+
+      <form class="contact-form" action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+
+        <label for="business-type">Business Type</label>
+        <select id="business-type" name="business-type" required>
+          <option value="" disabled selected>Select your business type</option>
+          <option value="real-estate">Real Estate</option>
+          <option value="local-business">Local Business</option>
+          <option value="e-commerce">E-Commerce</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell us about your business and goals..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Mobile buttons -->
+  <div id="mobile-buttons" aria-label="Mobile Navigation Buttons">
+    <button data-section="services">Services</button>
+    <button data-section="process">Process</button>
+    <button data-section="testimonials">Testimonials</button>
+  </div>
+
+  <!-- Overlay modal -->
+  <div id="overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="content-box">
+      <button class="close-btn" aria-label="Close Overlay">&times;</button>
+      <div id="overlay-content"></div>
+    </div>
+  </div>
+
+  <script>
+    // Get elements
+    const buttons = document.querySelectorAll('#mobile-buttons button');
+    const overlay = document.getElementById('overlay');
+    const overlayContent = document.getElementById('overlay-content');
+    const closeBtn = document.querySelector('.close-btn');
+
+    // Content for each section (you can customize)
+    const sectionsContent = {
+      services: `
+        <h3>Our Services</h3>
+        <p>Optimized Facebook & Instagram ad campaigns that drive leads and increase conversions.</p>
+        <ul>
+          <li><strong>Meta Ads Management:</strong> Tailored ads targeting your ideal audience.</li>
+          <li><strong>Lead Generation:</strong> High-quality leads ready to convert.</li>
+          <li><strong>Campaign Strategy:</strong> Data-driven approach for best ROI.</li>
+        </ul>
+      `,
+      process: `
+        <h3>Our Process</h3>
+        <ul>
+          <li>1. Free Discovery Call to Understand Your Needs</li>
+          <li>2. Custom Strategy Development & Proposal</li>
+          <li>3. Campaign Setup and Launch</li>
+          <li>4. Continuous Optimization & Reporting</li>
+          <li>5. Scale Your Ads & Grow Your Business</li>
+        </ul>
+      `,
+      testimonials: `
+        <h3>What Our Clients Say</h3>
+        <p>“IGX Media took our real estate ads to the next level. Leads increased by 200% in just 3 months!” — Sarah K., Realtor</p>
+        <p>“The team is responsive, knowledgeable, and results-driven. Highly recommend for local business marketing.” — Mike D., Local Business Owner</p>
+      `
+    };
+
+    // Show overlay with selected content
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const section = btn.getAttribute('data-section');
+        overlayContent.innerHTML = sectionsContent[section];
+        overlay.style.display = 'block';
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // prevent background scroll
+      });
+    });
+
+    // Close overlay
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close overlay on outside click
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Optional: close overlay on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === "Escape" && overlay.style.display === 'block') {
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+</body>
+</html>
+<script src="//code.tidio.co/t4v9bmdhe0tdff3vw8gsq11dcmx3nniq.js" async></script>
